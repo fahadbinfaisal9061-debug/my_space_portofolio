@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7eddb">
+<title>MY SPACE — Personal Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--paper:#f7eddb;--ink:#171717;--red:#ef3d26;--yellow:#f6d443;--orange:#ff7a35;--line:rgba(23,23,23,.2);--muted:#70695f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotesk',sans-serif}a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-size:20px;font-weight:700;letter-spacing:-1px}.brand span{color:var(--red)}.navlinks{display:flex;gap:28px;font-size:13px;font-weight:600}.navlinks a:hover{color:var(--red)}.navtag{font:11px 'DM Mono';border:1px solid var(--ink);padding:9px 12px;border-radius:30px}
+.hero{padding:78px 0 62px;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}.eyebrow{font:11px 'DM Mono';letter-spacing:2px;text-transform:uppercase;color:var(--red)}h1{font-size:clamp(64px,10vw,132px);line-height:.84;letter-spacing:-.09em;margin:22px 0 28px;font-weight:700}h1 .outline{color:transparent;-webkit-text-stroke:1.7px var(--ink)}.intro{font-size:18px;line-height:1.6;max-width:470px;color:#4b463f}.hero-actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:3px;font-size:13px;font-weight:700;border:1px solid var(--ink);transition:.2s}.btn.primary{background:var(--red);color:white;border-color:var(--red)}.btn:hover{transform:translateY(-3px)}.hero-art{min-height:420px;background:var(--yellow);position:relative;overflow:hidden;border-radius:48% 48% 8px 8px;display:flex;align-items:center;justify-content:center;transform:rotate(2deg)}.sun{width:260px;height:260px;border-radius:50%;background:var(--red);position:absolute;top:40px;right:25px}.blob{position:absolute;width:270px;height:320px;background:var(--orange);border-radius:48% 52% 30% 70%;bottom:-85px;left:35px;transform:rotate(-25deg)}.arttype{position:relative;z-index:2;font-size:clamp(55px,8vw,100px);font-weight:700;line-height:.8;letter-spacing:-.1em;text-align:center;color:var(--paper);text-shadow:5px 5px 0 var(--ink);transform:rotate(-9deg)}.sticker{position:absolute;z-index:3;right:22px;bottom:35px;background:var(--paper);border:2px solid var(--ink);border-radius:50%;width:92px;height:92px;display:grid;place-items:center;text-align:center;font:11px 'DM Mono';transform:rotate(12deg)}
+.marquee{background:var(--red);color:white;padding:14px 0;overflow:hidden;white-space:nowrap;font-weight:700;letter-spacing:2px;font-size:13px}.marquee span{padding-right:38px}
+section{padding:82px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:34px}.section-head h2{font-size:clamp(38px,6vw,66px);letter-spacing:-.07em;margin:10px 0 0}.section-head p{font:11px 'DM Mono';color:var(--muted)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}.about-copy{font-size:clamp(20px,3vw,30px);line-height:1.35;letter-spacing:-.04em}.about-note{font-size:15px;line-height:1.8;color:var(--muted);max-width:430px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.work{min-height:260px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--ink);background:#f3d9c5;transition:.2s}.work:nth-child(2){background:var(--yellow)}.work:nth-child(3){background:#e9a9a0}.work:hover{transform:translateY(-6px)}.work .num{font:11px 'DM Mono'}.work h3{font-size:30px;letter-spacing:-.06em;margin:0}.work p{font-size:13px;line-height:1.5;max-width:240px}.contact{background:var(--ink);color:var(--paper);padding:60px 0}.contact h2{font-size:clamp(45px,8vw,90px);line-height:.9;letter-spacing:-.08em;margin:18px 0 28px}.contact .eyebrow{color:var(--yellow)}.contact-row{display:flex;justify-content:space-between;align-items:end;gap:20px}.contact .btn{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}footer{padding:22px 0;display:flex;justify-content:space-between;font:10px 'DM Mono';color:var(--muted)}
+/* Secret login: keyboard shortcut only; public portfolio styling remains unchanged */.modal-backdrop{position:fixed;inset:0;background:rgba(5,7,12,.86);backdrop-filter:blur(12px);z-index:40;display:flex;align-items:center;justify-content:center;padding:20px;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .28s ease,visibility .28s ease}.modal-backdrop.show{visibility:visible;opacity:1;pointer-events:auto}.modal{width:min(440px,100%);background:#17191f;color:#f7eddb;padding:32px;border:1px solid #454954;border-radius:16px;box-shadow:0 24px 90px rgba(0,0,0,.5);transform:translateY(18px) scale(.98);transition:transform .32s cubic-bezier(.2,.8,.2,1)}.modal-backdrop.show .modal{transform:translateY(0) scale(1)}.modal h2{font-size:34px;letter-spacing:-.06em;margin:0 0 8px;color:#fff}.modal p{font-size:13px;line-height:1.6;color:#a6a9b2}.field{width:100%;padding:14px;border:1px solid #4a4e58;border-radius:8px;background:#101116;color:#fff;margin:8px 0 14px;outline:none}.field:focus{border:1px solid var(--yellow);box-shadow:0 0 0 3px rgba(246,212,67,.12)}.modal-actions{display:flex;gap:10px}.modal-actions button{flex:1;cursor:pointer}.modal-actions .btn{border-radius:8px}.modal-actions .btn:not(.primary){color:#eee;border-color:#555;background:transparent}.error{color:#ff7868;font-size:12px;min-height:18px}.close{float:right;border:0;background:none;color:#aaa;font-size:25px;cursor:pointer}.close:hover{color:#fff}
+.dashboard{position:fixed;inset:0;z-index:30;background:#171717;color:#f7eddb;display:none;overflow:auto}.dashboard.show{display:block}.dash-wrap{width:min(1050px,calc(100% - 36px));margin:auto}.dash-nav{height:76px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #454545}.dash-nav strong{font-size:19px}.dash-nav strong span{color:var(--red)}.dash-nav button,.dash-btn{border:1px solid #777;background:transparent;color:#f7eddb;padding:10px 14px;cursor:pointer}.dash-hero{padding:50px 0 30px}.dash-hero .eyebrow{color:var(--yellow)}.dash-hero h1{font-size:clamp(48px,8vw,82px);margin:16px 0}.dash-hero p{color:#aaa;font-size:14px}.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:20px 0 60px}.dash-card{border:1px solid #494949;padding:24px;background:#202020}.dash-card h3{margin:0 0 8px;font-size:22px}.dash-card p{font-size:13px;color:#aaa;line-height:1.6}.ig-button{display:inline-block;background:var(--red);color:white;padding:13px 16px;font-weight:700;font-size:13px;margin-top:8px}.friend-form{display:flex;gap:8px;margin-top:14px}.friend-form input{min-width:0;flex:1;background:#111;border:1px solid #555;color:white;padding:12px}.friend-form button{background:var(--yellow);border:0;padding:0 15px;font-weight:700;cursor:pointer}.friend-list{list-style:none;padding:0;margin:16px 0 0}.friend-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-top:1px solid #444;font-size:13px}.friend-list a{color:var(--yellow)}.friend-list button{background:none;border:0;color:#999;cursor:pointer}.dash-note{font-size:11px;color:#888;margin-top:16px;line-height:1.6}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--yellow);color:#171717;padding:12px 18px;font-size:12px;z-index:50;display:none}
+@media(max-width:760px){.wrap{width:min(100% - 32px,560px)}nav{height:68px}.navlinks{gap:13px;font-size:11px}.navtag{display:none}.hero{grid-template-columns:1fr;padding:54px 0 44px;gap:28px}.hero-art{min-height:310px}.sun{width:190px;height:190px}.blob{width:210px;height:260px}.about-grid{grid-template-columns:1fr;gap:20px}.cards{grid-template-columns:1fr}.work{min-height:210px}.section-head{align-items:start;flex-direction:column}section{padding:60px 0}.contact-row{align-items:start;flex-direction:column}.dash-grid{grid-template-columns:1fr}.dash-hero{padding-top:35px}footer{gap:15px;flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#top">✳ MY SPACE<span>.</span></a>
+    <div class="navlinks"><a href="#about">ABOUT</a><a href="#work">WORK</a><a href="#contact">CONTACT</a></div>
+    <div class="navtag">PORTFOLIO / 2026</div>
+  </nav>
+  <main id="top">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">INDEPENDENT MIND · CREATIVE SOUL</div>
+        <h1>HELLO,<br>I'M <span class="outline">YOU.</span></h1>
+        <p class="intro">A little corner of the internet to show what I make, what I love, and what I'm becoming.</p>
+        <div class="hero-actions"><a class="btn primary" href="#work">EXPLORE MY WORLD ↗</a><a class="btn" href="#contact">SAY HELLO</a></div>
+      </div>
+      <div class="hero-art"><div class="sun"></div><div class="blob"></div><div class="arttype">MAKE<br>IT<br>MATTER.</div><div class="sticker">GOOD<br>THINGS<br>GROW ✳</div></div>
+    </div>
+  </main>
+</div>
+<div class="marquee"><span>✳ THINK DIFFERENTLY</span><span>✳ MAKE SOMETHING</span><span>✳ STAY CURIOUS</span><span>✳ THINK DIFFERENTLY</span><span>✳ MAKE SOMETHING</span></div>
+<div class="wrap">
+  <section id="about">
+    <div class="section-head"><div><div class="eyebrow">01 / A LITTLE INTRO</div><h2>WHO I AM.</h2></div><p>THE PERSON BEHIND THE PIXELS ↘</p></div>
+    <div class="about-grid"><div class="about-copy">I'm a curious person who enjoys exploring ideas, learning new things, and turning little sparks of inspiration into something real.</div><div class="about-note">This is your space. Replace this text with your own story, your interests, your background, and the things that make you you. Keep it honest, keep it personal.</div></div>
+  </section>
+  <section id="work">
+    <div class="section-head"><div><div class="eyebrow">02 / WHAT I DO</div><h2>SELECTED THINGS.</h2></div><p>A FEW PIECES OF MY WORLD ↘</p></div>
+    <div class="cards">
+      <article class="work"><div class="num">01 — CREATIVE</div><div><h3>Ideas & Design</h3><p>Experiments, visual ideas, and creative things in progress.</p></div></article>
+      <article class="work"><div class="num">02 — PROJECTS</div><div><h3>Things I Build</h3><p>Personal projects, digital experiences, and things I'm proud of.</p></div></article>
+      <article class="work"><div class="num">03 — LIFE</div><div><h3>Little Moments</h3><p>Interests, memories, inspiration, and everything in between.</p></div></article>
+    </div>
+  </section>
+</div>
+<div class="contact" id="contact"><div class="wrap"><div class="eyebrow">03 / GET IN TOUCH</div><div class="contact-row"><div><h2>HAVE A GOOD<br>ONE. SAY HELLO.</h2><p style="color:#aaa;font-size:14px">Want to connect, collaborate, or just say hi?</p></div><a class="btn" href="mailto:hello@example.com">EMAIL ME ↗</a></div></div></div>
+<div class="wrap"><footer><span>© 2026 MY SPACE — MADE WITH CURIOSITY</span><span>BUILT TO BE YOURS ✳</span></footer></div>
+
+<!-- Secret login modal -->
+<div class="modal-backdrop" id="loginModal">
+  <div class="modal">
+    <button class="close" id="closeModal" aria-label="Close">×</button>
+    <div class="eyebrow">PRIVATE ACCESS · AUTHORIZED ENTRY</div>
+    <h2 id="modalTitle">YOU FOUND IT.</h2>
+    <p id="modalText">This space is just for you. Enter your private passcode to continue.</p>
+    <form id="loginForm">
+      <input class="field" id="passcode" type="password" placeholder="Enter passcode" autocomplete="current-password" required>
+      <div class="error" id="loginError"></div>
+      <div class="modal-actions"><button class="btn primary" type="submit" id="loginButton">UNLOCK ↗</button><button class="btn" type="button" id="cancelLogin">CANCEL</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- Private dashboard -->
+<div class="dashboard" id="dashboard">
+  <div class="dash-wrap">
+    <div class="dash-nav"><strong>MY PRIVATE <span>SPACE.</span></strong><button id="logout">LOCK & EXIT ↗</button></div>
+    <div class="dash-hero"><div class="eyebrow">HIDDEN CORNER / PERSONAL USE ONLY</div><h1>WELCOME<br>BACK.</h1><p>Your private launchpad. Instagram opens securely in its own tab.</p></div>
+    <div class="dash-grid">
+      <div class="dash-card">
+        <div class="eyebrow">01 / INSTAGRAM</div><h3>Your Instagram inbox</h3>
+        <p>Open Instagram's official inbox and continue your conversations there. You'll sign in directly with Instagram if needed.</p>
+        <a class="ig-button" href="https://www.instagram.com/direct/inbox/" target="_blank" rel="noopener noreferrer">OPEN INSTAGRAM DMS ↗</a>
+        <p class="dash-note">This shortcut does not read or send messages inside this website. Instagram handles your login and messaging.</p>
+      </div>
+      <div class="dash-card">
+        <div class="eyebrow">02 / FRIEND SHORTCUTS</div><h3>Your people</h3>
+        <p>Add Instagram usernames to keep profile shortcuts here. Select a person to open their Instagram profile.</p>
+        <form class="friend-form" id="friendForm"><input id="friendName" placeholder="Instagram username" maxlength="30" required><button type="submit">ADD +</button></form>
+        <ul class="friend-list" id="friendList"></ul>
+      </div>
+      <div class="dash-card">
+        <div class="eyebrow">03 / PRIVATE NOTES</div><h3>Little reminders</h3>
+        <p>Keep a note for yourself in this browser.</p>
+        <textarea class="field" id="privateNotes" rows="5" placeholder="Write something only for this browser..."></textarea>
+        <button class="dash-btn" id="saveNotes">SAVE NOTE</button>
+      </div>
+      <div class="dash-card">
+        <div class="eyebrow">04 / QUICK LINKS</div><h3>Your online world</h3>
+        <p>Open your own Instagram profile or return to the public portfolio.</p>
+        <a class="ig-button" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">OPEN INSTAGRAM ↗</a>
+        <button class="dash-btn" style="display:block;margin-top:12px" id="backPublic">BACK TO PORTFOLIO</button>
+      </div>
+    </div>
+    <p class="dash-note" style="padding-bottom:30px">Privacy note: this static prototype stores the passcode, friend shortcuts, and notes in this browser. It is not secure authentication; a person with developer-tools access can bypass client-side checks. Use server-side authentication and protected storage before putting genuinely private information here.</p>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2400)}
+function hasPass(){return !!localStorage.getItem('myspace_passcode')}
+function setupMode(){const first=!hasPass();$('modalTitle').textContent=first?'CREATE YOUR SECRET KEY':'PRIVATE ACCESS';$('modalText').textContent=first?'Create a passcode for this browser to set up your private dashboard.':'Enter your private passcode to continue.';$('passcode').placeholder=first?'Create a passcode (at least 6 characters)':'Enter passcode';$('loginButton').textContent=first?'CREATE & UNLOCK ↗':'UNLOCK ↗';}
+function isEditingText(target){
+  if(!(target instanceof Element)) return false;
+  return !!target.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"], [contenteditable="plaintext-only"], [role="textbox"]');
+}
+document.addEventListener('keydown',e=>{
+  const isShortcut=e.key.toLowerCase()==='m' && e.shiftKey && !e.altKey &&
+    ((e.ctrlKey && !e.metaKey) || (e.metaKey && !e.ctrlKey));
+  if(!isShortcut || isEditingText(e.target)) return;
+  e.preventDefault();
+  e.stopPropagation();
+  if($('dashboard').classList.contains('show') || $('loginModal').classList.contains('show')) return;
+  setupMode();
+  $('loginError').textContent='';
+  $('passcode').value='';
+  $('loginModal').classList.add('show');
+  window.setTimeout(()=>$('passcode').focus(),180);
+});
+$('closeModal').onclick=$('cancelLogin').onclick=()=>{$('loginModal').classList.remove('show');$('loginError').textContent='';$('passcode').value=''};
+$('loginForm').addEventListener('submit',e=>{
+ e.preventDefault();const p=$('passcode').value;const first=!hasPass();
+ if(first){if(p.length<6){$('loginError').textContent='Use at least 6 characters.';return;}localStorage.setItem('myspace_passcode',p);}
+ else if(p!==localStorage.getItem('myspace_passcode')){$('loginError').textContent='That passcode does not match.';return;}
+ $('loginModal').classList.remove('show');$('passcode').value='';$('loginError').textContent='';$('dashboard').classList.add('show');loadDashboard();
+});
+function loadDashboard(){renderFriends();$('privateNotes').value=localStorage.getItem('myspace_notes')||''}
+function renderFriends(){const arr=JSON.parse(localStorage.getItem('myspace_friends')||'[]');$('friendList').innerHTML='';if(!arr.length){const li=document.createElement('li');li.textContent='No shortcuts yet — add a username above.';$('friendList').appendChild(li);return;}
+ arr.forEach((name,i)=>{const li=document.createElement('li');const a=document.createElement('a');a.href='https://www.instagram.com/'+encodeURIComponent(name)+'/';a.target='_blank';a.rel='noopener noreferrer';a.textContent='@'+name+' ↗';const b=document.createElement('button');b.textContent='REMOVE';b.onclick=()=>{arr.splice(i,1);localStorage.setItem('myspace_friends',JSON.stringify(arr));renderFriends()};li.append(a,b);$('friendList').appendChild(li);});
+}
+$('friendForm').addEventListener('submit',e=>{e.preventDefault();const n=$('friendName').value.trim().replace(/^@/,'').replace(/[^a-zA-Z0-9._]/g,'');if(!n){toast('Enter a valid Instagram username.');return;}const arr=JSON.parse(localStorage.getItem('myspace_friends')||'[]');if(!arr.includes(n))arr.push(n);localStorage.setItem('myspace_friends',JSON.stringify(arr));$('friendName').value='';renderFriends();});
+$('saveNotes').onclick=()=>{localStorage.setItem('myspace_notes',$('privateNotes').value);toast('Note saved in this browser.')};
+function exitDash(){$('dashboard').classList.remove('show')}
+$('logout').onclick=exitDash;$('backPublic').onclick=exitDash;
+</script>
+</body></html>
